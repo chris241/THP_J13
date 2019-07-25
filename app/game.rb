@@ -1,9 +1,10 @@
+require '/lib/app/BoardCase'
 class Game
   #TO DO : la classe a plusieurs attr_accessor: le current_player (égal à un objet Player), le status (en cours, nul ou un objet Player s'il gagne), le Board et un array contenant les 2 joueurs.
   attr_accessor :current_player, :winner , :turn
   def initialize
     #TO DO : créé 2 joueurs, créé un board, met le status à "on going", défini un current_player
-    @board = Board.new
+    @board = BoardCase.new
     @current_player = ""
     @winner = false
     @turn = 0
@@ -24,22 +25,14 @@ class Game
 
   def new_round
     # TO DO : relance une partie en initialisant un nouveau board mais en gardant les mêmes joueurs.
-    puts "Vous voulez rejouer oui(1) ou non(2)"
-    nombre = gets.chomp.to_i
-    if nombre == 1
-      return 
+    puts "Vous voulez faire un autre jeux?"
+    i = true
+    if i 
+      puts "Nouveau jeux"
     else
       system("exit")
     end
   end
-   def get_names
-    puts "Player X name: "
-    name1 = gets.chomp
-    puts "Player O name: "
-    name2 = gets.chomp
-    [name1, name2]
-  end
-
   def game_end
     # TO DO : permet l'affichage de fin de partie quand un vainqueur est détecté ou si il y a match nul
     names = get_names
@@ -54,6 +47,6 @@ class Game
       puts "Draw!"
     end
   end    
-
 end
 game1 =Game.new
+puts game1
