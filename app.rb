@@ -8,7 +8,10 @@ require_relative '/lib/app/player'
 class Application
   def perform
   
-
+player
+braodcase
+broad
+game
   end
 
 end

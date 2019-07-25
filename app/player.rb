@@ -13,10 +13,8 @@ class Player
     name1 = gets.chomp
     puts "Le nom du Joueur 0: "
     name2 = gets.chomp
-    [name1, name2]
+    name = [name1, name2]
   end
 end
-
-puts player = Player.new(get_names)
  
 

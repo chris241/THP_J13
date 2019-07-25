@@ -1,12 +1,12 @@
 require '/lib/app/BoardCase'
 class Game
   #TO DO : la classe a plusieurs attr_accessor: le current_player (égal à un objet Player), le status (en cours, nul ou un objet Player s'il gagne), le Board et un array contenant les 2 joueurs.
-  attr_accessor :current_player, :winner , :turn
+  attr_accessor :current_player, :win , :turn
   def initialize
     #TO DO : créé 2 joueurs, créé un board, met le status à "on going", défini un current_player
     @board = BoardCase.new
     @current_player = ""
-    @winner = false
+    @win = false
     @turn = 0
   end
 
@@ -17,7 +17,7 @@ class Game
     if choice > 9 || choice < 1
       puts "warning: number must be betwenn 1 and 9"
     elsif @current_player.move(choice) != false
-      @winner = @current_player if @current_player.winner?
+      @win = @current_player if @current_player.winner?
       @turn += 1
       switch_player
     end
@@ -40,13 +40,12 @@ class Game
     @player2 = Player.new(names[1], :O, @board)
     @current_player = @player1
     @board.show_board
-    turn until @winner || @turn == 9
+    turn until @win || @turn == 9
     if @winner
-      puts "#{@winner.name} wins!"
+      puts "#{@win.name} wins!"
     else
       puts "Draw!"
     end
   end    
 end
 game1 =Game.new
-puts game1
