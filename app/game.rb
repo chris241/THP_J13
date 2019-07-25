@@ -32,14 +32,28 @@ class Game
       system("exit")
     end
   end
+   def get_names
+    puts "Player X name: "
+    name1 = gets.chomp
+    puts "Player O name: "
+    name2 = gets.chomp
+    [name1, name2]
+  end
 
   def game_end
     # TO DO : permet l'affichage de fin de partie quand un vainqueur est détecté ou si il y a match nul
-    if Player.win 
-      puts ""
-    elsif 
-      puts "Match NUL"
+    names = get_names
+    @player1 = Player.new(names[0], :X, @board)
+    @player2 = Player.new(names[1], :O, @board)
+    @current_player = @player1
+    @board.show_board
+    turn until @winner || @turn == 9
+    if @winner
+      puts "#{@winner.name} wins!"
+    else
+      puts "Draw!"
     end
   end    
 
 end
+game1 =Game.new
