@@ -7,6 +7,13 @@ class Player
     @name = name
     @mark = mark
     @board = board
+    puts "Veuillez entrer le nom du premier joueur"
+    print ">"
+    @name = gets.chomp 
+    puts "Veuillez entrer le nom du premier joueur"
+    print ">"
+    @name = gets.chomp 
+    print ">"
   end
   def move (cell)
   	@board.update_cell(self.mark)
